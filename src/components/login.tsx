@@ -144,60 +144,62 @@ export default function Login() {
     return (
       <AlertDialog.Root>
         <AlertDialogTrigger>
-          <NavigationMenuTrigger>
-            <Button variant='outline' className="hover:bg-white ">
-              <User className="mr-2" color="white" size={24} />
-              <div className='text-md xl:text-lg text-white hover:text-black'>
-              {userName}{" "}
-              </div>
-              <CaretDown color="white" className="ml-2" aria-hidden />
-            </Button>
-            <NavigationMenuContent>
-              <List>
-                <ListItem>
-                  <AvatarRoot>
-                    <AvatarImage src="/images/thumbs-up.png"></AvatarImage>
-                    <AvatarFallback>TG</AvatarFallback>
-                  </AvatarRoot>
-                  <ListItemHeading style={{ paddingTop: "10px" }}>
-                    Welcome {userName}!
-                  </ListItemHeading>
-                  <ListItemText>Member since 2023</ListItemText>
-                </ListItem>
-                <div style={{ paddingBottom: "20px", paddingTop: "10px" }}>
-                  <Button className="bg-red-400" onClick={handleLogout}>
-                    Logout
-                  </Button>
+            <NavigationMenuTrigger>
+              <Button variant="outline" className="hover:bg-white ">
+                <User className="mr-2" color="white" size={24} />
+                <div className="text-md xl:text-lg text-white hover:text-black">
+                  {userName}{" "}
                 </div>
-                <SeparatorRoot css={{ margin: "15px 0" }} />
-                {isInBeta ? (
-                  <ListItemLink variant="success">
-                    <ListItemText style={{ color: "whiteSmoke" }}>
-                      <CheckCircle2
-                        className="mr-2"
-                        color="green"
-                        size={35}
-                        style={{ display: "inline" }}
-                      />
-                      You Are Enrolled!
-                    </ListItemText>
-                    <div>
-                      <Button variant="link2" size="sm" onClick={leaveBeta}>Opt Out</Button>
-                    </div>
-                  </ListItemLink>
-                ) : (
-                  <ListItemLink variant="beta">
-                    <ListItemText style={{ color: "whiteSmoke" }}>
-                      Join our Early Access Program!
-                    </ListItemText>
-                    <div style={{ paddingTop: "10px" }}>
-                      <Button onClick={enterBeta}>Enroll</Button>
-                    </div>
-                  </ListItemLink>
-                )}
-              </List>
-            </NavigationMenuContent>
-          </NavigationMenuTrigger>
+                <CaretDown color="white" className="ml-2" aria-hidden />
+              </Button>
+              <NavigationMenuContent>
+                <List>
+                  <ListItem>
+                    <AvatarRoot>
+                      <AvatarImage src="/images/thumbs-up.png"></AvatarImage>
+                      <AvatarFallback>TG</AvatarFallback>
+                    </AvatarRoot>
+                    <ListItemHeading style={{ paddingTop: "10px" }}>
+                      Welcome {userName}!
+                    </ListItemHeading>
+                    <ListItemText>Member since 2023</ListItemText>
+                  </ListItem>
+                  <div style={{ paddingBottom: "20px", paddingTop: "10px" }}>
+                    <Button className="bg-red-400" onClick={handleLogout}>
+                      Logout
+                    </Button>
+                  </div>
+                  <SeparatorRoot css={{ margin: "15px 0" }} />
+                  {isInBeta ? (
+                    <ListItemLink variant="success">
+                      <ListItemText style={{ color: "whiteSmoke" }}>
+                        <CheckCircle2
+                          className="mr-2"
+                          color="green"
+                          size={35}
+                          style={{ display: "inline" }}
+                        />
+                        You Are Enrolled!
+                      </ListItemText>
+                      <div>
+                        <Button variant="link2" size="sm" onClick={leaveBeta}>
+                          Opt Out
+                        </Button>
+                      </div>
+                    </ListItemLink>
+                  ) : (
+                    <ListItemLink variant="beta">
+                      <ListItemText style={{ color: "whiteSmoke" }}>
+                        Join our Early Access Program!
+                      </ListItemText>
+                      <div style={{ paddingTop: "10px" }}>
+                        <Button onClick={enterBeta}>Enroll</Button>
+                      </div>
+                    </ListItemLink>
+                  )}
+                </List>
+              </NavigationMenuContent>
+            </NavigationMenuTrigger>
         </AlertDialogTrigger>
       </AlertDialog.Root>
     );
