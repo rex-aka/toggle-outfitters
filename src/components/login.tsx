@@ -47,10 +47,14 @@ export default function Login() {
   const [betaUsers, setBetaUsers] = useState([])
 
   function handleLogin(e: Event) {
+    // Setting the user's name in the context object
+    let user = 'Toggle';
     e.preventDefault();
     setIsLoggedIn(true);
     const context: any = ldclient?.getContext();
+    console.log(context);
     const optedIn = betaUsers.find(element => element === user);
+    console.log(optedIn);
     if (optedIn === user) {
       context.user.inBeta = true
       setIsInBeta(true)
@@ -59,14 +63,16 @@ export default function Login() {
       context.user.inBeta = false
       setIsInBeta(false)
     }
-    context.user.name = inputRef.current.value;
+    context.user.name = user
     ldclient?.identify(context);
     setCookie("ldcontext", context);
+    console.log(context);
     setHandleModal(false);
     setUserName(user);
   }
 
   function handleLogout() {
+    console.log("logout-happened");
     setIsLoggedIn(false);
     setIsInBeta(false);
     const context: any = ldclient?.getContext();
@@ -83,6 +89,7 @@ export default function Login() {
     ldclient?.identify(context);
     setCookie("ldcontext", context);
     setBetaUsers(betaUsers => [...betaUsers, userName]);
+    console.log(betaUsers);
   }
 
   function leaveBeta() {
@@ -92,6 +99,7 @@ export default function Login() {
     ldclient?.identify(context);
     setCookie("ldcontext", context);
     setBetaUsers(betaUsers => {return betaUsers.filter(betaUsers => {betaUsers !== userName})})
+    console.log(betaUsers)
   }
 
   if (getCookie("ldcontext") === undefined) {
